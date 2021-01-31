@@ -13,3 +13,8 @@ void bubble_sort(int size, int *arr) {
   for (int k = 0; k < size; k++) cout << arr[k] << endl;
   return;
 }
+
+void quick_sort(int size, int *arr) { return; }
+
+void merge_sort(int size, int *arr) { return; }
+
