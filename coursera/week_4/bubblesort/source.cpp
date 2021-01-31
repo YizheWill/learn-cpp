@@ -1,32 +1,40 @@
 #include <iostream>
 using namespace std;
-
-int main()
-{
-  int n, a[1000]; // 一共n个数，n不超过1000。a用来保存这些数
-  cin >> n;
-  // 输入n个数
-  for (int i = 0; i < n; i++)
-  {
-    cin >> a[i];
-  }
-  // 冒泡，不断比较相邻的两个数，如果顺序错了，那么就交换
-  for (int i = 0; i < n - 1; i++)
-  {
-    for (int j = 1; j < n - i; j++)
-    {
-      if (a[j - 1] > a[j])
-      {
-        int temp = a[j];
-        a[j] = a[j - 1];
-        a[j - 1] = temp;
+void swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+  return;
+}
+void bubble_sort(int size, int *arr) {
+  int i = 0, j = size;
+  bool sorted = false;
+  while (!sorted) {
+    sorted = true;
+    i = 0;
+    while (i < j - 1) {
+      if (arr[i] > arr[i + 1]) {
+        swap(&arr[i], &arr[i + 1]);
+        sorted = false;
       }
+      i++;
     }
   }
-  // 依次输出
-  for (int i = 0; i < n; i++)
-  {
-    cout << a[i] << endl;
+  return;
+}
+void print_arr(int size, int *arr) {
+  for (int i = 0; i < size; i++) {
+    cout << arr[i] << endl;
   }
+  return;
+}
+int main() {
+  int n, a[1000];
+  cin >> n;
+  for (int i = 0; i < n; i++) {
+    cin >> a[i];
+  }
+  bubble_sort(n, a);
+  print_arr(n, a);
   return 0;
 }
